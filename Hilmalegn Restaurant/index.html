@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hilmalegn-Restaurant Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!--Login Modal  -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close" aria-label="close login modal">&times;</span>
+        <h2>Login to Foodie</h2>
+        <form id=" form" autocomplete="off">
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              required
+              aria-required="true"
+            />
+            <label for="email">Email</label>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              placeholder="password"
+              required
+              aria-required="true"
+            />
+            <label for="password">Password</label>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" aria-label="submit login form">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--Reservation modal  -->
+    <div class="modal" id="reservationModal">
+      <div class="modal-content">
+        <span class="close" aria-label="close login modal">&times;</span>
+        <h2>Make a Reservation</h2>
+        <form id="ReservationForm" autocomplete="off">
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              aria-required="true"
+            />
+            <label>Your Name</label>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              aria-required="true"
+            />
+            <label>Your Email</label>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              required
+              aria-required="true"
+            />
+            <label>Phone Number</label>
+          </div>
+
+          <div class="form-group">
+            <input type="date" required aria-required="true" />
+            <label>Date</label>
+          </div>
+          <div class="form-group">
+            <input type="time" required aria-required="true" />
+            <label>Time</label>
+          </div>
+
+          <div class="form-group">
+            <select required aria-required="true">
+              <option value="">Number of Guests</option>
+              <option value="1">1 person</option>
+              <option value="2">2 person</option>
+              <option value="3">3 person</option>
+              <option value="4">4 person</option>
+              <option value="5+">5+ person</option>
+            </select>
+            <label>Number of Guests</label>
+          </div>
+
+          <div class="form-group">
+            <textarea placeholder="Special Requests" rows="3"></textarea>
+            <label>Special Requests</label>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" aria-label="submit reservation form">
+              Make Reservation
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Contact modal -->
+    <div class="modal" id="contactModal">
+      <div class="modal-content">
+        <span class="close" aria-label="close login Modal">&times;</span>
+        <h2>Send us a Message</h2>
+        <form id="contactForm" autocomplete="off">
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              aria-required="true"
+            />
+            <label>Your Name</label>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              aria-required="true"
+            />
+            <label>Your Email</label>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Subject"
+              required
+              aria-required="true"
+            />
+            <label>Subject</label>
+          </div>
+
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="5"></textarea>
+            <label>Your Message</label>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" aria-label="submit contact form">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart" aria-label="close cart Sidebar">
+          &times;
+        </button>
+      </div>
+
+      <div id="cartItems">
+        <!-- Cart items will be held here! -->
+        <div class="cart-item">
+          <img
+            src="./images/download (1).jfif"
+            alt="something"
+            loading="lazy"
+          />
+          <div class="cart-item-detail">
+            <div class="cart-item-name">Beyeayentu</div>
+            <div class="cart-item-price">120.00 ETB</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-total">
+        <h3>Total: <span id="cartTotal">0.00 ETB</span></h3>
+        <button class="checkout-btn" aria-label="Proceed to Checkout">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- header -->
+    <header class="header">
+      <nav class="navbar">
+        <a href="#home" class="logo" aria-label=" Hilmalegn Restaurant home">
+          <i class="fas fa-utensils"></i>
+          Hilmalegn Restaurant
+        </a>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#reservation">Reservation</a></li>
+          <li><a href="#contactModal">Contact</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+
+        <div class="nav-icons">
+          <i class="fas fa-search" aria-label="search"></i>
+          <i
+            class="fas fa-shopping-cart"
+            id="cartIcon"
+            aria-label="view cart"
+          ></i>
+          <span class="cart-count" id="cartCount">0</span>
+          <i
+            class="fas fa-heart"
+            id="favoritesIcon"
+            aria-label="view favoritesIcon"
+          ></i>
+          <button class="login-btn" id="loginBtn" aria-label="open login modal">
+            Login
+          </button>
+        </div>
+
+        <div class="menu-toggle" aria-label="Toggle navigation menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </header> 
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-content fade-in">
+          <div class="welcome-text">Welcome To</div>
+          <h1 class="hero-title">
+            Hilmalegn Restaurant and Enjoy
+            <span class="highlight">The Food</span>
+          </h1>
+          <p class="hero-description">
+            At Hilmalegn Restaurant, we believe that food is more than just a
+            meal. it is a connection to our heritage. we take pride in serving
+            our local community the most authentic Ethiopian dishes, from our
+            perfectly fermented Injera to our slow-simmered wats. whether your
+            are joining us for a family gathering or a quick taste of home, our
+            kitchen is always open for you.
+          </p>
+
+          <div class="hero-buttons">
+            <a
+              href="#reservation"
+              class="btn-primary"
+              aria-label="Reserve a table"
+              >Reserve a table</a
+            >
+            <a href="#home" class="btn-secondary" aria-label="Online Order"
+              >Online Order</a
+            >
+          </div>
+
+          <div class="opening-hours">
+            <i class="fas fa-clock"></i>
+            Open: 12:00pm - 4:00pm
+          </div>
+        </div>
+
+        <div class="hero-image fade-in">
+          <div class="main-dish-container">
+            <img
+              src="./images/5195351845117825766_121.jpg"
+              alt="kelekel"
+              class="main-dish"
+              loading="lazy"
+            />
+
+            <div class="floating-elements">
+              <div class="floating-tomato">🍅</div>
+              <div class="floating-herb">🌿</div>
+              <div class="best-food-badge">Best Food 🍽️</div>
+
+              <div class="dish-info-card">
+                <img
+                  src="./images/5195351845117825766_121.jpg"
+                  alt="kelekel"
+                  class="another-dish"
+                  loading="lazy"
+                />
+                <div class="dish-info">
+                  <h4>Kelekel</h4>
+                  <div class="stars">★★★★★</div>
+                  <p>
+                    Traditional Ethiopian dish made with fermented Injera and
+                    spicy stews.
+                  </p>
+                  <div class="price">250 ETB</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Dishes Section -->
+    <section id="menu" class="popular-dishes">
+      <div class="section-header fade-in">
+        <h2 class="section-title">
+          Our Popular <span class="highlight">Dishes</span>
+        </h2>
+
+        <div class="section-nav">
+          <div
+            class="nav-bar nav-arrow"
+            id="prev-dish"
+            aria-label="previous dish"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </div>
+
+          <div class="nav-bar nav-arrow" id="prev-dish" aria-label="Next dish">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="dishes-grid" id="dishes-container">
+        <div class="dish-card fade-in">
+          <div class="dish-rating">(5.6k) <i class="fas fa-star"></i></div>
+          <button
+            class="favorite-btn"
+            data-name="beyeayentu Special food"
+            aria-label="Toogle favorite for beyeayentu "
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <div class="favorite-image">
+            <img
+              src="./images/download (1).jfif"
+              alt="beyeayentu"
+              class="dish-image"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="dish-name">Beyeayentu</h3>
+          <div class="dish-price">120 ETB</div>
+          <p class="dish-description">
+            Beyeayentu is colorful and diverse Ethiopian platter featuring a
+            variety of vegan stews
+          </p>
+          <button
+            class="add-to-cart-btn"
+            data-name="beyeayentu Special food"
+            data-price="120 ETB"
+            data-image="./images/download (1).jfif"
+          >
+            <i class="fas fa-plus"></i>Add to Cart
+          </button>
+        </div>
+
+        <div class="dish-card fade-in">
+          <div class="dish-rating">(5.6k) <i class="fas fa-star"></i></div>
+          <button
+            class="favorite-btn"
+            data-name="sigaTibs Special food"
+            aria-label="Toogle favorite for sigaTibs "
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <div class="favorite-image">
+            <img
+              src="./images/sega Tebse.jfif"
+              alt="sigaTibs"
+              class="dish-image"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="dish-name">Siga Tibs</h3>
+          <div class="dish-price">200 ETB</div>
+          <p class="dish-description">
+            Siga Tibs is a festive dish often enjoyed during celebrations or
+            when breaking a fast
+          </p>
+          <button
+            class="add-to-cart-btn"
+            data-name="sigaTibs Special food"
+            data-price="200 ETB"
+            data-image="./images/sega Tebse.jfif"
+          >
+            <i class="fas fa-plus"></i>Add to Cart
+          </button>
+        </div>
+
+        <div class="dish-card fade-in">
+          <div class="dish-rating">(5.6k) <i class="fas fa-star"></i></div>
+          <button
+            class="favorite-btn"
+            data-name="shirowet Special food"
+            aria-label="Toogle favorite for shirowet "
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <div class="favorite-image">
+            <img
+              src="./images/shiro wet.jfif"
+              alt="shirowet"
+              class="dish-image"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="dish-name">Shiro Wet</h3>
+          <div class="dish-price">80 ETB</div>
+          <p class="dish-description">
+            Shiro Wot is a thicker version, often cooked and served bubbling hot
+            in a tradition clay pot
+          </p>
+          <button
+            class="add-to-cart-btn"
+            data-name="shirowet Special food"
+            data-price="80 ETB"
+            data-image="./images/shiro wet.jfif"
+          >
+            <i class="fas fa-plus"></i>Add to Cart
+          </button>
+        </div>
+
+        <div class="dish-card fade-in">
+          <div class="dish-rating">(5.6k) <i class="fas fa-star"></i></div>
+          <button
+            class="favorite-btn"
+            data-name="special Injera Firefire Special food"
+            aria-label="Toogle favorite for specialInjeraFirefire "
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <div class="favorite-image">
+            <img
+              src="./images/special Injera Firefire.jpg"
+              alt="specialInjeraFirefire"
+              class="dish-image resize"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="dish-name">Special Injera Firfir</h3>
+          <div class="dish-price">100 ETB</div>
+          <p class="dish-description">
+            Special Injera Firfir is whole piece of Injera and it is common to
+            see it served with a side of Ayib to cool down the heat of Berbere
+          </p>
+          <button
+            class="add-to-cart-btn"
+            data-name="special Injera Firefire Special food"
+            data-price="100 ETB"
+            data-image="./images/special Injera Firefire.jpg"
+          >
+            <i class="fas fa-plus"></i>Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="about-container">
+        <div class="about-text fade-in">
+          <h2>About Our <span class="highlight">Restaurant</span></h2>
+          <p>
+            Welcome to Hilmalegn-Restaurant, where culinary excellence meets
+            exceptional service. Since 2014, we have been dedicated to providing
+            our guests with an unforgettable dining experience.
+          </p>
+          <p>
+            Our passionate chefs combine traditional techniques with modern
+            innovation, creating dishes that celebrate both local ingredients
+            and international flavors. Every meal is crafted with precision,
+            care, and a commitment to quality that you can taste in every bite.
+          </p>
+          <p>
+            From intimate dinners to special celebrations, we provide the
+            perfect ambiance for any occasion. Come and discover why food lovers
+            choose Hilmalegn-Restaurant as their favorite dining destination.
+          </p>
+        </div>
+
+        <div class="about-image fade-in">
+          <img src="./images/Doro wot.jpg" alt="Doro Wot" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Section -->
+    <section class="services">
+      <div class="container">
+        <h2
+          class="services-title fade-in"
+          style="text-align: center; margin-bottom: 1rem"
+        >
+          Our <span class="highlight">Service</span>
+        </h2>
+
+        <div class="services-grid">
+          <div class="services-card fade-in">
+            <div class="service-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Fine Dining</h3>
+            <p>
+              Experience exceptional cuisine prepared by our award-winning chefs
+              using the finest ingredients and innovative techniques.
+            </p>
+          </div>
+
+          <div class="services-card fade-in">
+            <div class="service-icon">
+              <i class="fas fa-birthday-cake"></i>
+            </div>
+            <h3>Special Events</h3>
+            <p>
+              Host your special occasions with us. From birthday parties to
+              corporate events, we make every celebration memorable.
+            </p>
+          </div>
+
+          <div class="services-card fade-in">
+            <div class="service-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3>Food Delivery</h3>
+            <p>
+              Enjoy our delicious meals from the comfort of your home with our
+              fast and reliable delivery service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
+      <div class="reservation-container">
+        <h3 class="reservation-info">Vist Us Today</h3>
+
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Address</h4>
+            <p>Near to Traffic Light <br />Debre Tabor, Ethiopia</p>
+          </div>
+
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4>Phone</h4>
+            <p>+251-935729384</p>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="openReservationModal">
+          Make a Reservation
+        </button>
+
+        <button class="btn-primary" id="openContactModal">
+          Send Us a Message
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer  -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Hilmalegn Restaurant</h3>
+          <p>
+            Experience the finest dining with exceptional service and delicious
+            cuisine. We are committed to providing our guests with memorable
+            culinary experiences.
+          </p>
+          <div class="social-icons">
+            <!-- fix if it is not work the favicon is not work ???-->
+            <a
+              href="https://www.youtube.com/@hilmalegn26/featured"
+              target="_blank"
+              aria-label="Youtube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+
+            <a
+              href="https://www.facebook.com/hilmalegngt@gmail.com"
+              target="_blank"
+              aria-label="Facebook"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a
+              href="https://t.me/HAILE_kid"
+              target="_blank"
+              aria-label="Telegram"
+              ><i class="fab fa-telegram-plane"></i
+            ></a>
+            <a
+              href="https://www.tiktok.com/ hilmalegnandabet26"
+              target="_blank"
+              aria-label="Tiktok"
+              ><i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="mailto:hailemariamgeremew16@gmail.com" aria-label="Email"
+              ><i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#reservation">Reservation</a></li>
+            <li><a href="#contactModal">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">Dine-in</a></li>
+            <li><a href="#">Takeaway</a></li>
+            <li><a href="#">Delivery</a></li>
+            <li><a href="#">Catering</a></li>
+            <li><a href="#">Private Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Near to Traffic Light Debre
+            Tabor, Ethiopia
+          </p>
+          <p><i class="fas fa-phone"></i> +251-935729384</p>
+          <p><i class="fas fa-envelope"></i> hailemariamgeremew16@gmail.com</p>
+          <p><i class="fas fa-clock"></i> Mon - sun: 12:00pm - 4:00pm</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy 2018 Hilmalegn Restaurant. All rights reserved.| Privacy Policy
+          |Terms of service
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
